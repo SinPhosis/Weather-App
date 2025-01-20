@@ -114,7 +114,7 @@ function App() {
   }
 
   return (
-    <div className="w-[1600px] h-[1200px] justify-center items-center flex m-40">
+    <div className="w-[1600px] h-[1200px] justify-center items-center flex relative top-[100px] left-[200px]">
       <div className="w-[800px] h-[1200px] relative bg-gray-100 rounded-l-xl flex-col justify-start items-start inline-flex overflow-hidden">
         <div className="w-[1740px] h-[1200px] relative">
           <div className="w-[140px] h-[140px] top-[530px] left-[730px] bg-gray-100 absolute rounded-full border border-gray-200">
@@ -152,7 +152,7 @@ function App() {
                   >
                     {city}
                   </p>
-                ))}
+                ))} 
               </div>
             )}
 
@@ -172,7 +172,7 @@ function App() {
                 </div>
               </div>
               <div className="h-[230px] flex-col justify-start items-start inline-flex">
-                <div className="text-gray-900 text-[144px] left-[25px] bottom-[153px] absolute bg-gradient-to-b from-gray-900 to-gray-300 bg-clip-text text-transparent font-black">
+                <div className="text-gray-900 text-[144px] left-[1px] bottom-[153px] absolute bg-gradient-to-b from-gray-900 to-gray-300 bg-clip-text text-transparent font-black">
                   {weatherData}˚
                 </div>
                 <div className="text-[#fe8e26] absolute bottom-[120px] left-[48px] text-2xl font-extrabold">
@@ -229,7 +229,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="w-[396px] h-[197px] bg-gradient-to-b from-gray-300 to-gray-700 bg-clip-text text-transparent text-[144px] absolute bottom-[167px] font-extrabold font-['Manrope Fallback']">
+          <div className="w-[396px] h-[197px] bg-gradient-to-b from-gray-300 to-gray-700 bg-clip-text text-transparent text-[144px] absolute left-[0px] bottom-[167px] font-extrabold font-['Manrope Fallback']">
             {nightTemperature}˚
           </div>
           <div className="text-[#777cce] text-2xl font-extrabold font-['Manrope Fallback'] absolute bottom-[134px] left-[48px]">
