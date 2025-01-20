@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllCities } from "./utils/get-country-and-city";
-import Skeleton from "react-loading-skeleton";
+
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
