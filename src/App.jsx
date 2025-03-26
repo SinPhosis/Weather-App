@@ -114,7 +114,7 @@ function App() {
   }
 
   return (
-    <div className="w-[1600px] h-[1200px] justify-center items-center flex relative top-[100px] left-[200px]">
+    <div className="w-auto h-auto justify-center items-center flex relative top-[100px] left-[200px]">
       <div className="w-[800px] h-[1200px] relative bg-gray-100 rounded-l-xl flex-col justify-start items-start inline-flex overflow-hidden">
         <div className="w-[1740px] h-[1200px] relative">
           <div className="w-[140px] h-[140px] top-[530px] left-[730px] bg-gray-100 absolute rounded-full border border-gray-200">
