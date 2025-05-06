@@ -114,136 +114,121 @@ function App() {
   }
 
   return (
-    <div className="w-auto h-auto justify-center items-center flex relative top-[100px] left-[200px]">
-      <div className="w-[800px] h-[1200px] relative bg-gray-100 rounded-l-xl flex-col justify-start items-start inline-flex overflow-hidden">
-        <div className="w-[1740px] h-[1200px] relative">
-          <div className="w-[140px] h-[140px] top-[530px] left-[730px] bg-gray-100 absolute rounded-full border border-gray-200">
-            <img
-              className="absolute block right-[75px] top-[25px]"
-              src="./Group 4.png"
-            ></img>
+    <div className="w-screen h-screen flex justify-center items-center bg-gray-200 overflow-hidden">
+    <div className="flex flex-col lg:flex-row w-full h-full max-w-[1600px] max-h-[1000px] overflow-hidden">
+      
+      {/* LEFT PANEL - Day Mode */}
+      <div className="flex-1 bg-gray-100 relative rounded-l-2xl overflow-hidden">
+        {/* Weather Circle Decorations */}
+        <div className="absolute w-[340px] h-[340px] top-[25%] left-[25%] rounded-full border border-gray-200"></div>
+        <div className="absolute w-[540px] h-[540px] top-[20%] left-[20%] rounded-full border border-gray-200"></div>
+        <div className="absolute w-[940px] h-[940px] top-[10%] left-[10%] rounded-full border border-gray-200"></div>
+  
+        {/* Sun Icon and Circle */}
+        <div className="absolute top-[45%] left-[45%] w-[140px] h-[140px] bg-gray-100 rounded-full border border-gray-200 flex justify-center items-center">
+          <img className="w-[60px]" src="./Group 4.png" alt="Sun" />
+        </div>
+        <img className="absolute top-[12%] left-[10%]" src="./sun-little.webp" alt="Small Sun" />
+  
+        {/* Search Bar */}
+        <div className="absolute top-5 left-10 w-[90%] max-w-[400px] px-6 py-4 bg-white rounded-full shadow-lg flex items-center gap-4">
+          <img src="./search.png" alt="Search Icon" />
+          <input
+            value={searchValue}
+            onChange={onChange}
+            className="flex-1 font-bold text-lg outline-none"
+            placeholder="Search..."
+          />
+        </div>
+  
+        {/* Search Dropdown */}
+        {filteredData.length > 0 && (
+          <div className="absolute top-[100px] left-10 w-[90%] max-w-[400px] py-4 bg-white/80 rounded-3xl backdrop-blur shadow-lg z-10">
+            {filteredData.map((city) => (
+              <p
+                key={city}
+                onClick={() => handleClickCity(city)}
+                className="p-2 cursor-pointer hover:bg-gray-200"
+              >
+                {city}
+              </p>
+            ))}
           </div>
-          <div className="w-[340px] h-[340px] absolute left-[630px] top-[430px] rounded-full border border-gray-200" />
-          <div className="w-[540px] h-[540px] absolute left-[530px] top-[330px] rounded-full border border-gray-200" />
-          <div className="w-[940px] h-[940px] absolute left-[330px] top-[130px] rounded-full border border-gray-200" />
-          <div className="w-[1340px] h-[1340px] absolute left-[130px] top-[-70px] rounded-full border border-gray-200" />
-          <div className="w-[1740px] h-[1740px] absolute left-[-70px] bottom-[-270px] rounded-full border border-gray-200" />
-          <img
-            className="absolute left-[130px] top-[170px]"
-            src="./sun-little.webp"
-          ></img>
-          <div className="w-[800px] h-[1200px] relative">
-            <div className="w-[400px] h-[65px] px-6 py-4 absolute top-[20px] left-[40px] bg-white rounded-[48px] shadow-[0px_12px_24px_0px_rgba(0,0,0,0,0.06)] justify-start items-center gap-4 inline-flex">
-              <img src="./search.png" alt="Search Icon" />
-              <input
-                value={searchValue}
-                onChange={onChange}
-                className="w-[400px] h-[65px] font-bold text-[20px] rounded-[48px] justify-start items-center inline-flex"
-                placeholder="Search..."
-              />
+        )}
+  
+        {/* Main Weather Card - Day */}
+        <div className="absolute top-[20%] left-[15%] w-[90%] max-w-[414px] h-[80%] bg-white/75 rounded-[48px] overflow-hidden shadow-xl">
+          <div className="w-full h-[60%] bg-gradient-to-b from-gray-50 to-gray-50 rounded-[42px] relative">
+            <div className="absolute top-6 left-6 text-gray-500 text-lg font-medium">{currentDate}</div>
+            <div className="absolute top-16 left-6 text-gray-900 text-5xl font-extrabold">{selectedCity}</div>
+            <img className="absolute top-40 left-14 w-[262px] h-[262px]" src="./Sun.png" alt="Weather Icon" />
+            <div className="absolute top-[370px] left-2 text-[120px] text-transparent bg-gradient-to-b from-gray-900 to-gray-300 bg-clip-text font-black">
+              {weatherData}˚
             </div>
-            {filteredData.length > 0 && (
-              <div className="w-[400px] absolute top-[100px] left-[40px] py-4 bg-white/80 rounded-3xl bg-transparent backdrop-blur shadow-lg">
-                {filteredData.map((city) => (
-                  <p
-                    key={city}
-                    onClick={() => handleClickCity(city)}
-                    className="p-2 cursor-pointer hover:bg-gray-200"
-                  >
-                    {city}
-                  </p>
-                ))} 
-              </div>
-            )}
-
-            <div className="w-[414px] h-[828px] left-[193px] top-[230px] relative bg-white/75 rounded-[48px] overflow-hidden">
-              <div className="w-[398px] h-[504px] absolute left-[8px] top-[8px] bg-gradient-to-b from-gray-50 to-gray-50 rounded-[42px]" />
-              <img
-                className="w-[262.11px] h-[262.11px] absolute left-[56px] top-[196px]"
-                src="./Sun.png"
-                alt="Weather Icon"
-              />
-              <div className="h-[91px] flex-col justify-start items-start inline-flex">
-                <div className="text-gray-500 text-lg top-[56px] left-[40px] absolute font-medium">
-                  {currentDate}
-                </div>
-                <div className="text-gray-900 text-5xl top-[81px] left-[40px] absolute font-extrabold">
-                  {selectedCity}
-                </div>
-              </div>
-              <div className="h-[230px] flex-col justify-start items-start inline-flex">
-                <div className="text-gray-900 text-[144px] left-[1px] bottom-[153px] absolute bg-gradient-to-b from-gray-900 to-gray-300 bg-clip-text text-transparent font-black">
-                  {weatherData}˚
-                </div>
-                <div className="text-[#fe8e26] absolute bottom-[120px] left-[48px] text-2xl font-extrabold">
-                  {weatherCondition}
-                </div>
-              </div>
+            <div className="absolute top-[540px] left-12 text-[#fe8e26] text-2xl font-extrabold">
+              {weatherCondition}
             </div>
-
-            <div className="w-[318px] h-8 bottom-[182px] left-[241px] absolute justify-between items-end inline-flex">
-              <img src="./Home.png" />
-              <img src="./Pin.png" />
-              <img src="./Heart.png" />
-              <img src="./User.png" />
-            </div>
+          </div>
+  
+          {/* Bottom Nav Icons */}
+          <div className="absolute bottom-4 left-10 flex justify-between w-[318px]">
+            <img src="./Home.png" alt="Home" />
+            <img src="./Pin.png" alt="Pin" />
+            <img src="./Heart.png" alt="Heart" />
+            <img src="./User.png" alt="User" />
           </div>
         </div>
       </div>
-      <div className="w-[800px] h-[1200px] bg-[#0f141e] relative flex-col justify-start items-start inline-flex overflow-hidden">
-        <div className="w-[140px] h-[140px] top-[530px] right-[730px] bg-gray-100 absolute rounded-full border border-gray-200">
-          <img
-            className="absolute right-[15px] top-[25px]"
-            src="./Vector.png"
-          ></img>
+  
+      {/* RIGHT PANEL - Night Mode */}
+      <div className="flex-1 bg-[#0f141e] relative rounded-r-2xl overflow-hidden">
+        {/* Night Decorations */}
+        <div className="absolute w-[340px] h-[340px] top-[25%] right-[25%] rounded-full border border-white opacity-10"></div>
+        <div className="absolute w-[540px] h-[540px] top-[20%] right-[20%] rounded-full border border-white opacity-10"></div>
+        <div className="absolute w-[940px] h-[940px] top-[10%] right-[10%] rounded-full border border-white opacity-10"></div>
+  
+        {/* Vector Icon in Circle */}
+        <div className="absolute top-[45%] right-[45%] w-[140px] h-[140px] bg-gray-100 rounded-full border border-gray-200 flex justify-center items-center">
+          <img className="w-[60px]" src="./Vector.png" alt="Moon Icon" />
         </div>
-        <div className="w-[340px] h-[340px] top-[430px] right-[630px] opacity-10 absolute rounded-full border border-white" />
-        <div className="w-[540px] h-[540px] absolute top-[330px] right-[530px] opacity-10 rounded-full border border-white" />
-        <div className="w-[940px] h-[940px] absolute top-[130px] right-[330px] opacity-10 rounded-full border border-white" />
-        <div className="w-[1340px] h-[1340px] absolute top-[-70px] right-[130px] opacity-5 rounded-full border border-white" />
-        <div className="w-[1740px] h-[1740px] absolute top-[-270px] right-[-70px] opacity-5 rounded-full border border-white" />
-
-        <img
-          className="absolute bottom-[104px] right-[145px]"
-          src="./Ellipse 22.png"
-        />
-        <div className="w-[414px] h-[832px] relative top-[216px] left-[193px] bg-gray-900/75 rounded-[48px] backdrop-blur-xl overflow-hidden">
-          <div className="w-[398px] h-[504px] absolute bottom-[320px] right-[8px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[42px]">
-            <div className="h-[91px] flex-col justify-start items-start inline-flex">
-              <div className="text-gray-400 text-lg font-medium font-['Manrope Fallback'] absolute left-[40px] top-[56px]">
-                {currentDate}
-              </div>
-              <div className="text-white text-5xl font-extrabold font-['Manrope Fallback'] absolute top-[81px] left-[40px]">
-                {selectedCity}
-              </div>
+  
+        {/* Decorative Ellipse */}
+        <img className="absolute bottom-24 right-36" src="./Ellipse 22.png" alt="Decoration" />
+  
+        {/* Main Weather Card - Night */}
+        <div className="absolute top-[20%] left-[15%] w-[90%] max-w-[414px] h-[80%] bg-gray-900/75 rounded-[48px] backdrop-blur-xl overflow-hidden shadow-xl">
+          <div className="w-full h-[60%] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[42px] relative">
+            <div className="absolute top-6 left-6 text-gray-400 text-lg font-medium">{currentDate}</div>
+            <div className="absolute top-16 left-6 text-white text-5xl font-extrabold">{selectedCity}</div>
+            <img className="absolute top-20 right-6" src="localization_icon.png" alt="Location" />
+            <div className="absolute top-32 left-[69px] w-[277px] h-[277px]">
+              <img src="./shadow.png" alt="Shadow" />
               <img
-                className="left-[326px] top-[85px] absolute"
-                src="localization_icon.png"
-              ></img>
-              <div className="w-[277px] h-[277px] top-[171px] left-[69px] relative">
-                <img src="./shadow.png"></img>
-                <img
-                  className="absolute bottom-[12px] right-[11px] w-[264.89px] h-[264.89px]"
-                  src="./icon.png"
-                ></img>
-              </div>
+                className="absolute bottom-[12px] right-[11px] w-[265px] h-[265px]"
+                src="./icon.png"
+                alt="Weather Icon"
+              />
             </div>
           </div>
-          <div className="w-[396px] h-[197px] bg-gradient-to-b from-gray-300 to-gray-700 bg-clip-text text-transparent text-[144px] absolute left-[0px] bottom-[167px] font-extrabold font-['Manrope Fallback']">
+  
+          <div className="absolute bottom-[140px] left-4 w-[396px] text-[120px] text-transparent bg-gradient-to-b from-gray-300 to-gray-700 bg-clip-text font-extrabold">
             {nightTemperature}˚
           </div>
-          <div className="text-[#777cce] text-2xl font-extrabold font-['Manrope Fallback'] absolute bottom-[134px] left-[48px]">
+          <div className="absolute bottom-[100px] left-12 text-[#777cce] text-2xl font-extrabold">
             {nightCondition}
           </div>
-          <div className="w-[318px] h-8 absolute bottom-[48px] left-[48px] justify-between items-end inline-flex">
-            <img src="./Home.png" />
-            <img src="./Pin.png" />
-            <img src="./Heart.png" />
-            <img src="./User.png" />
+  
+          {/* Bottom Nav Icons */}
+          <div className="absolute bottom-4 left-10 flex justify-between w-[318px]">
+            <img src="./Home.png" alt="Home" />
+            <img src="./Pin.png" alt="Pin" />
+            <img src="./Heart.png" alt="Heart" />
+            <img src="./User.png" alt="User" />
           </div>
         </div>
       </div>
     </div>
+  </div>  
   );
 }
 
